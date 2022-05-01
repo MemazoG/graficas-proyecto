@@ -65,7 +65,7 @@ const uranusSystem = new THREE.Group()
 const neptuneSystem = new THREE.Group()
 
 // Sun
-const sunGeometry = new THREE.SphereGeometry(4)
+const sunGeometry = new THREE.SphereGeometry(4, 32, 16)
 const sunTexture = new THREE.TextureLoader().load(sunImg)
 const sunMaterial = new THREE.MeshBasicMaterial({ map: sunTexture })
 const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial)

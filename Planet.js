@@ -12,7 +12,7 @@ export default class Planet {
     // Creates and returns planet's geometry, texture, material and mesh
     getMesh() {
         if(this.mesh === undefined || this.mesh === null) {
-            const geometry = new THREE.SphereGeometry(this.planetRadius)
+            const geometry = new THREE.SphereGeometry(this.planetRadius, 32, 16)
             const texture = new THREE.TextureLoader().load(this.imgRoute)
             const material = new THREE.MeshBasicMaterial({ map: texture })
             this.mesh = new THREE.Mesh(geometry, material)
