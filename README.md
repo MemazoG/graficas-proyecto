@@ -22,7 +22,7 @@ Guillermo Andrés García Vázquez
 - [@MemazoG](https://github.com/MemazoG)
 
 
-## Ejecutar el proyecto
+## Ejecutar el proyecto localmente
 
 #### Traer proyecto a ambiente local
 Mediante `git clone` o descargando el ZIP del repositorio
