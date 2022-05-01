@@ -11,10 +11,8 @@ import saturnImg from "./images/saturn.jpg"
 import saturnRing from "./images/saturn_ring.png"
 import uranusImg from "./images/uranus.jpg"
 import neptuneImg from "./images/neptune.jpg"
-import Planet from "./Planet"
-
-// Debug
-const gui = new dat.GUI()
+import Planet from "./Planet" // Class that creates planets
+import environment from "./environmentSetup" // File with default attributes for each element to be modified with dat.gui
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -65,7 +63,7 @@ const uranusSystem = new THREE.Group()
 const neptuneSystem = new THREE.Group()
 
 // Sun
-const sunGeometry = new THREE.SphereGeometry(4, 32, 16)
+const sunGeometry = new THREE.SphereGeometry(environment.sun.radius, 32, 16)
 const sunTexture = new THREE.TextureLoader().load(sunImg)
 const sunMaterial = new THREE.MeshBasicMaterial({ map: sunTexture })
 const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial)
@@ -117,7 +115,78 @@ solarSystem.add(mercurySystem, venusSystem, earthSystem, marsSystem, jupiterSyst
 scene.add(solarSystem)
 
 // =================================================================================================
+// Debug
+const gui = new dat.GUI()
+const folders = {
+  camera: gui.addFolder("Camera"),
+  sun: gui.addFolder("Sun"),
+  mercury: gui.addFolder("Mercury"),
+  venus: gui.addFolder("Venus"),
+  earth: gui.addFolder("Earth"),
+  mars: gui.addFolder("Mars"),
+  jupiter: gui.addFolder("Jupiter"),
+  saturn: gui.addFolder("Saturn"),
+  uranus: gui.addFolder("Uranus"),
+  neptune: gui.addFolder("Neptune"),
+}
+// Camera Attributes
+folders.camera.add(camera.position, "z", 10, 100)
 
+// Sun Attributes
+folders.sun.add(environment.sun, "radius", 1, 50).onChange(() => {
+  sunMesh.geometry.dispose()
+  sunMesh.geometry = new THREE.SphereGeometry(environment.sun.radius, 32, 16)
+})
+
+// Mercury Attributes
+folders.mercury.add(environment.planets.mercury, "radius", 1, 50).onChange(() => {
+  mercuryMesh.geometry.dispose()
+  mercuryMesh.geometry = new THREE.SphereGeometry(environment.planets.mercury.radius, 32, 16)
+})
+
+// Venus Attributes
+folders.venus.add(environment.planets.venus, "radius", 1, 50).onChange(() => {
+  venusMesh.geometry.dispose()
+  venusMesh.geometry = new THREE.SphereGeometry(environment.planets.venus.radius, 32, 16)
+})
+
+// Earth Attributes
+folders.earth.add(environment.planets.earth, "radius", 1, 50).onChange(() => {
+  earthMesh.geometry.dispose()
+  earthMesh.geometry = new THREE.SphereGeometry(environment.planets.earth.radius, 32, 16)
+})
+
+// Mars Attributes
+folders.mars.add(environment.planets.mars, "radius", 1, 50).onChange(() => {
+  marsMesh.geometry.dispose()
+  marsMesh.geometry = new THREE.SphereGeometry(environment.planets.mars.radius, 32, 16)
+})
+
+// Jupiter Attributes
+folders.jupiter.add(environment.planets.jupiter, "radius", 1, 50).onChange(() => {
+  jupiterMesh.geometry.dispose()
+  jupiterMesh.geometry = new THREE.SphereGeometry(environment.planets.jupiter.radius, 32, 16)
+})
+
+// Saturn Attributes
+folders.saturn.add(environment.planets.saturn, "radius", 1, 50).onChange(() => {
+  saturnMesh.geometry.dispose()
+  saturnMesh.geometry = new THREE.SphereGeometry(environment.planets.saturn.radius, 32, 16)
+})
+
+// Uranus Attributes
+folders.uranus.add(environment.planets.uranus, "radius", 1, 50).onChange(() => {
+  uranusMesh.geometry.dispose()
+  uranusMesh.geometry = new THREE.SphereGeometry(environment.planets.uranus.radius, 32, 16)
+})
+
+// Neptune Attributes
+folders.neptune.add(environment.planets.neptune, "radius", 1, 50).onChange(() => {
+  neptuneMesh.geometry.dispose()
+  neptuneMesh.geometry = new THREE.SphereGeometry(environment.planets.neptune.radius, 32, 16)
+})
+
+// =================================================================================================
 // Gets called when window's size changes
 window.addEventListener('resize', () =>
 {
