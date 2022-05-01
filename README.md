@@ -9,6 +9,8 @@ Desarrollado con WebGL utilizando la librería de Three.js.
 ## Avance (30 de abril de 2022)
 Se agregaron las esferas correspondientes al sol y a los planetas
 
+![Imagen avance 2](images/avance2.PNG)
+
 Cada esfera cuenta con su textura correspondiente y rota sobre su propio eje.
 ## Recursos utilizados
 
