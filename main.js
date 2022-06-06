@@ -98,7 +98,7 @@ const mercuryObj = new THREE.Object3D() // Mercury system will rotate around thi
 mercuryObj.add(mercurySystem)
 
 const mercuryPath = new PlanetPath(mercuryDist)
-const mercuryPathMesh = mercuryPath.getMesh();
+const mercuryPathMesh = mercuryPath.getMesh()
 solarSystem.add(mercuryPathMesh)
 
 // Venus
@@ -109,7 +109,7 @@ const venusObj = new THREE.Object3D() // Venus system will rotate around this ob
 venusObj.add(venusSystem)
 
 const venusPath = new PlanetPath(venusDist)
-const venusPathMesh = venusPath.getMesh();
+const venusPathMesh = venusPath.getMesh()
 solarSystem.add(venusPathMesh)
 
 // Earth
@@ -120,7 +120,7 @@ const earthObj = new THREE.Object3D() // Earth system will rotate around this ob
 earthObj.add(earthSystem)
 
 const earthPath = new PlanetPath(earthDist)
-const earthPathMesh = earthPath.getMesh();
+const earthPathMesh = earthPath.getMesh()
 solarSystem.add(earthPathMesh)
 
 // Mars
@@ -131,7 +131,7 @@ const marsObj = new THREE.Object3D() // Mars system will rotate around this obje
 marsObj.add(marsSystem)
 
 const marsPath = new PlanetPath(marsDist)
-const marsPathMesh = marsPath.getMesh();
+const marsPathMesh = marsPath.getMesh()
 solarSystem.add(marsPathMesh)
 
 // Jupiter
@@ -142,7 +142,7 @@ const jupiterObj = new THREE.Object3D() // Jupiter system will rotate around thi
 jupiterObj.add(jupiterSystem)
 
 const jupiterPath = new PlanetPath(jupiterDist)
-const jupiterPathMesh = jupiterPath.getMesh();
+const jupiterPathMesh = jupiterPath.getMesh()
 solarSystem.add(jupiterPathMesh)
 
 // Saturn
@@ -153,7 +153,7 @@ const saturnObj = new THREE.Object3D() // Saturn system will rotate around this 
 saturnObj.add(saturnSystem)
 
 const saturnPath = new PlanetPath(saturnDist)
-const saturnPathMesh = saturnPath.getMesh();
+const saturnPathMesh = saturnPath.getMesh()
 solarSystem.add(saturnPathMesh)
 
 // Uranus
@@ -164,7 +164,7 @@ const uranusObj = new THREE.Object3D() // Uranus system will rotate around this 
 uranusObj.add(uranusSystem)
 
 const uranusPath = new PlanetPath(uranusDist)
-const uranusPathMesh = uranusPath.getMesh();
+const uranusPathMesh = uranusPath.getMesh()
 solarSystem.add(uranusPathMesh)
 
 // Neptune
@@ -175,7 +175,7 @@ const neptuneObj = new THREE.Object3D() // Neptune system will rotate around thi
 neptuneObj.add(neptuneSystem)
 
 const neptunePath = new PlanetPath(neptuneDist)
-const neptunePathMesh = neptunePath.getMesh();
+const neptunePathMesh = neptunePath.getMesh()
 solarSystem.add(neptunePathMesh)
 
 
