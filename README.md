@@ -16,6 +16,7 @@ Cada esfera cuenta con su textura correspondiente y rota sobre su propio eje.
 
  - [Three.js](https://threejs.org/)
  - [Texturas del sol y planetas](https://www.solarsystemscope.com/textures/)
+ - [Bump maps de Mercurio, Venus, Tierra, Marte y Júpiter](http://planetpixelemporium.com/planets.html)
  - [Vite](https://vitejs.dev/)
 
 
