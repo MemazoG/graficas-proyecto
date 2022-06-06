@@ -184,6 +184,68 @@ solarSystem.add(mercuryObj, venusObj, earthObj, marsObj, jupiterObj, saturnObj, 
 scene.add(solarSystem)
 
 // =================================================================================================
+
+// Gets called when window's size changes
+window.addEventListener('resize', () =>
+{
+    // Update sizes
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
+
+    // Update camera
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+
+    // Update renderer
+    renderer.setSize(sizes.width, sizes.height)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})
+
+// Animate
+const clock = new THREE.Clock()
+
+const tick = () =>
+{
+
+    const elapsedTime = clock.getElapsedTime()
+
+    // Update planet rotations around themselves
+     starsMesh.rotation.y = 0.001 * elapsedTime
+     sunMesh.rotation.y = 0.005 * elapsedTime
+     mercuryMesh.rotation.y = mercuryRotSpeed * elapsedTime
+     venusMesh.rotation.y = venusRotSpeed * elapsedTime
+     earthMesh.rotation.y = earthRotSpeed * elapsedTime
+     marsMesh.rotation.y = marsRotSpeed * elapsedTime
+     jupiterMesh.rotation.y = jupiterRotSpeed * elapsedTime
+     saturnMesh.rotation.y = saturnRotSpeed * elapsedTime
+     uranusMesh.rotation.y = uranusRotSpeed * elapsedTime
+     neptuneMesh.rotation.y = neptuneRotSpeed * elapsedTime
+
+    // Update planet revolutions around the Sun
+    mercuryObj.rotation.y = mercuryRevSpeed * elapsedTime
+    venusObj.rotation.y = venusRevSpeed * elapsedTime
+    earthObj.rotation.y = earthRevSpeed  * elapsedTime
+    marsObj.rotation.y = marsRevSpeed * elapsedTime
+    jupiterObj.rotation.y = jupiterRevSpeed * elapsedTime
+    saturnObj.rotation.y = saturnRevSpeed * elapsedTime
+    uranusObj.rotation.y = uranusRevSpeed * elapsedTime
+    neptuneObj.rotation.y = neptuneRevSpeed * elapsedTime
+
+    // Update Orbital Controls
+     controls.update()
+
+    // Render
+    renderer.render(scene, camera)
+
+    // Call tick again on the next frame
+    window.requestAnimationFrame(tick)
+}
+
+tick()
+
+
+// =================================================================================================
+/*
 // Debug
 const gui = new dat.GUI()
 const folders = {
@@ -254,62 +316,4 @@ folders.neptune.add(environment.planets.neptune, "radius", 1, 50).onChange(() =>
   neptuneMesh.geometry.dispose()
   neptuneMesh.geometry = new THREE.SphereGeometry(environment.planets.neptune.radius, 32, 16)
 })
-
-// =================================================================================================
-// Gets called when window's size changes
-window.addEventListener('resize', () =>
-{
-    // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
-
-    // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
-
-    // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-})
-
-// Animate
-const clock = new THREE.Clock()
-
-const tick = () =>
-{
-
-    const elapsedTime = clock.getElapsedTime()
-
-    // Update planet rotations around themselves
-     starsMesh.rotation.y = 0.001 * elapsedTime
-     sunMesh.rotation.y = 0.005 * elapsedTime
-     mercuryMesh.rotation.y = mercuryRotSpeed * elapsedTime
-     venusMesh.rotation.y = venusRotSpeed * elapsedTime
-     earthMesh.rotation.y = earthRotSpeed * elapsedTime
-     marsMesh.rotation.y = marsRotSpeed * elapsedTime
-     jupiterMesh.rotation.y = jupiterRotSpeed * elapsedTime
-     saturnMesh.rotation.y = saturnRotSpeed * elapsedTime
-     uranusMesh.rotation.y = uranusRotSpeed * elapsedTime
-     neptuneMesh.rotation.y = neptuneRotSpeed * elapsedTime
-
-    // Update planet revolutions around the Sun
-    mercuryObj.rotation.y = mercuryRevSpeed * elapsedTime
-    venusObj.rotation.y = venusRevSpeed * elapsedTime
-    earthObj.rotation.y = earthRevSpeed  * elapsedTime
-    marsObj.rotation.y = marsRevSpeed * elapsedTime
-    jupiterObj.rotation.y = jupiterRevSpeed * elapsedTime
-    saturnObj.rotation.y = saturnRevSpeed * elapsedTime
-    uranusObj.rotation.y = uranusRevSpeed * elapsedTime
-    neptuneObj.rotation.y = neptuneRevSpeed * elapsedTime
-
-    // Update Orbital Controls
-     controls.update()
-
-    // Render
-    renderer.render(scene, camera)
-
-    // Call tick again on the next frame
-    window.requestAnimationFrame(tick)
-}
-
-tick()
+*/
