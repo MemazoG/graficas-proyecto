@@ -15,7 +15,7 @@ import marsBump from "./images/marsBump.jpg"
 import jupiterImg from "./images/jupiter.jpg"
 import jupiterBump from "./images/jupiterBump.jpg"
 import saturnImg from "./images/saturn.jpg"
-import saturnRing from "./images/saturn_ring.png"
+import saturnRingImg from "./images/saturn_ring.png"
 import uranusImg from "./images/uranus.jpg"
 import neptuneImg from "./images/neptune.jpg"
 import Planet from "./Planet" // Class that creates planets
@@ -150,6 +150,15 @@ const saturnMesh = saturn.getMesh()
 saturnSystem.add(saturnMesh)
 const saturnObj = new THREE.Object3D() // Saturn system will rotate around this object, which is placed at the origin (0, 0, 0)
 saturnObj.add(saturnSystem)
+
+// Saturn - Ring
+const saturnRingGeometry = new THREE.TorusGeometry(sizes.saturn + 0.5, 0.08, 16, 100)
+const saturnRingTexture = new THREE.TextureLoader().load(saturnRingImg)
+const saturnRingMaterial = new THREE.MeshStandardMaterial({ map: saturnRingTexture })
+const saturnRingMesh = new THREE.Mesh(saturnRingGeometry, saturnRingMaterial)
+saturnRingMesh.rotateX(Math.PI / 2)
+saturnRingMesh.position.x += distances.saturn
+saturnObj.add(saturnRingMesh)
 
 const saturnPath = new PlanetPath(distances.saturn)
 const saturnPathMesh = saturnPath.getMesh()
