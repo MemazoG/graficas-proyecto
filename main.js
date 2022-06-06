@@ -1,6 +1,7 @@
 import './style.css'
 import * as THREE from 'three'
 import * as dat from 'dat.gui'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'; // Orbit Controls allow the user to move the camera around
 import sunImg from "./images/sun.jpg"
 import mercuryImg from "./images/mercury.jpg"
 import venusImg from "./images/venus.jpg"
@@ -39,6 +40,10 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+// Controls
+const controls = new OrbitControls(camera, renderer.domElement)
+controls.enableDamping = true
 
 // Lights
 const pointLight = new THREE.PointLight(0xffffff, 0.1)
@@ -203,10 +208,6 @@ window.addEventListener('resize', () =>
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
-// Controls
-// const controls = new OrbitControls(camera, canvas)
-// controls.enableDamping = true
-
 // Animate
 const clock = new THREE.Clock()
 
@@ -227,7 +228,7 @@ const tick = () =>
      neptuneMesh.rotation.y = .5 * elapsedTime
 
     // Update Orbital Controls
-    // controls.update()
+     controls.update()
 
     // Render
     renderer.render(scene, camera)
