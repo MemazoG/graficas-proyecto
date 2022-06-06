@@ -22,6 +22,7 @@ import Planet from "./Planet" // Class that creates planets
 import PlanetPath from "./PlanetPath" // Class that creates the rings representing a planet's path
 import environment from "./environmentSetup" // File with default attributes for each element to be modified with dat.gui
 import { sizes, distances, rotationSpeed, revolutionSpeed } from './scaleLogic' // File with all the scaling logic data
+import { DoubleSide } from 'three'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -152,13 +153,13 @@ const saturnObj = new THREE.Object3D() // Saturn system will rotate around this 
 saturnObj.add(saturnSystem)
 
 // Saturn - Ring
-const saturnRingGeometry = new THREE.TorusGeometry(sizes.saturn + 0.5, 0.08, 16, 100)
+const saturnRingGeometry = new THREE.RingGeometry(sizes.saturn + 0.5, sizes.saturn + 0.8, 32)
 const saturnRingTexture = new THREE.TextureLoader().load(saturnRingImg)
-const saturnRingMaterial = new THREE.MeshStandardMaterial({ map: saturnRingTexture })
+const saturnRingMaterial = new THREE.MeshBasicMaterial({ map: saturnRingTexture, side:DoubleSide })
 const saturnRingMesh = new THREE.Mesh(saturnRingGeometry, saturnRingMaterial)
 saturnRingMesh.rotateX(Math.PI / 2)
 saturnRingMesh.position.x += distances.saturn
-saturnObj.add(saturnRingMesh)
+saturnSystem.add(saturnRingMesh)
 
 const saturnPath = new PlanetPath(distances.saturn)
 const saturnPathMesh = saturnPath.getMesh()
