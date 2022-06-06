@@ -5,9 +5,13 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls' // Orb
 import starsImg from "./images/stars.jpg"
 import sunImg from "./images/sun.jpg"
 import mercuryImg from "./images/mercury.jpg"
+import mercuryBump from "./images/mercuryBump.jpg"
 import venusImg from "./images/venus.jpg"
+import venusBump from "./images/venusBump.jpg"
 import earthImg from "./images/earth.jpg"
+import earthBump from "./images/earthBump.jpg"
 import marsImg from "./images/mars.jpg"
+import marsBump from "./images/marsBump.jpg"
 import jupiterImg from "./images/jupiter.jpg"
 import saturnImg from "./images/saturn.jpg"
 import saturnRing from "./images/saturn_ring.png"
@@ -54,10 +58,10 @@ controls.minDistance = 5
 controls.maxDistance = 50
 
 // Lights
-const pointLight = new THREE.PointLight(0xffffff, 0.1)
-pointLight.position.x = 2
-pointLight.position.y = 3
-pointLight.position.z = 4
+const pointLight = new THREE.PointLight(0xffffff, 3, 70)
+//pointLight.position.x = 2
+//pointLight.position.y = 3
+//pointLight.position.z = 4
 scene.add(pointLight)
 
 // =================================================================================================
@@ -91,7 +95,7 @@ const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial)
 solarSystem.add(sunMesh)
 
 // Mercury PLANET
-const mercury = new Planet(mercurySize, mercuryDist, mercuryImg)
+const mercury = new Planet(mercurySize, mercuryDist, mercuryImg, mercuryBump)
 const mercuryMesh = mercury.getMesh()
 mercurySystem.add(mercuryMesh)
 const mercuryObj = new THREE.Object3D() // Mercury system will rotate around this object, which is placed at the origin (0, 0, 0)
@@ -102,7 +106,7 @@ const mercuryPathMesh = mercuryPath.getMesh()
 solarSystem.add(mercuryPathMesh)
 
 // Venus
-const venus = new Planet(venusSize, venusDist, venusImg)
+const venus = new Planet(venusSize, venusDist, venusImg, venusBump)
 const venusMesh = venus.getMesh()
 venusSystem.add(venusMesh)
 const venusObj = new THREE.Object3D() // Venus system will rotate around this object, which is placed at the origin (0, 0, 0)
@@ -113,7 +117,7 @@ const venusPathMesh = venusPath.getMesh()
 solarSystem.add(venusPathMesh)
 
 // Earth
-const earth = new Planet(earthSize, earthDist, earthImg)
+const earth = new Planet(earthSize, earthDist, earthImg, earthBump)
 const earthMesh = earth.getMesh()
 earthSystem.add(earthMesh)
 const earthObj = new THREE.Object3D() // Earth system will rotate around this object, which is placed at the origin (0, 0, 0)
@@ -124,7 +128,7 @@ const earthPathMesh = earthPath.getMesh()
 solarSystem.add(earthPathMesh)
 
 // Mars
-const mars = new Planet(marsSize, marsDist, marsImg)
+const mars = new Planet(marsSize, marsDist, marsImg, marsBump)
 const marsMesh = mars.getMesh()
 marsSystem.add(marsMesh)
 const marsObj = new THREE.Object3D() // Mars system will rotate around this object, which is placed at the origin (0, 0, 0)
@@ -135,7 +139,7 @@ const marsPathMesh = marsPath.getMesh()
 solarSystem.add(marsPathMesh)
 
 // Jupiter
-const jupiter = new Planet(jupiterSize, jupiterDist, jupiterImg)
+const jupiter = new Planet(jupiterSize, jupiterDist, jupiterImg, undefined)
 const jupiterMesh = jupiter.getMesh()
 jupiterSystem.add(jupiterMesh)
 const jupiterObj = new THREE.Object3D() // Jupiter system will rotate around this object, which is placed at the origin (0, 0, 0)
@@ -146,7 +150,7 @@ const jupiterPathMesh = jupiterPath.getMesh()
 solarSystem.add(jupiterPathMesh)
 
 // Saturn
-const saturn = new Planet(saturnSize, saturnDist, saturnImg)
+const saturn = new Planet(saturnSize, saturnDist, saturnImg, undefined)
 const saturnMesh = saturn.getMesh()
 saturnSystem.add(saturnMesh)
 const saturnObj = new THREE.Object3D() // Saturn system will rotate around this object, which is placed at the origin (0, 0, 0)
@@ -157,7 +161,7 @@ const saturnPathMesh = saturnPath.getMesh()
 solarSystem.add(saturnPathMesh)
 
 // Uranus
-const uranus = new Planet(uranusSize, uranusDist, uranusImg)
+const uranus = new Planet(uranusSize, uranusDist, uranusImg, undefined)
 const uranusMesh = uranus.getMesh()
 uranusSystem.add(uranusMesh)
 const uranusObj = new THREE.Object3D() // Uranus system will rotate around this object, which is placed at the origin (0, 0, 0)
@@ -168,7 +172,7 @@ const uranusPathMesh = uranusPath.getMesh()
 solarSystem.add(uranusPathMesh)
 
 // Neptune
-const neptune = new Planet(neptuneSize, neptuneDist, neptuneImg)
+const neptune = new Planet(neptuneSize, neptuneDist, neptuneImg, undefined)
 const neptuneMesh = neptune.getMesh()
 neptuneSystem.add(neptuneMesh)
 const neptuneObj = new THREE.Object3D() // Neptune system will rotate around this object, which is placed at the origin (0, 0, 0)
