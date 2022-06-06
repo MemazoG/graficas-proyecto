@@ -1,7 +1,8 @@
 import './style.css'
 import * as THREE from 'three'
 import * as dat from 'dat.gui'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'; // Orbit Controls allow the user to move the camera around
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls' // Orbit Controls allow the user to move the camera around
+import starsImg from "./images/stars.jpg"
 import sunImg from "./images/sun.jpg"
 import mercuryImg from "./images/mercury.jpg"
 import venusImg from "./images/venus.jpg"
@@ -44,6 +45,8 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 // Controls
 const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
+controls.minDistance = 5
+controls.maxDistance = 50
 
 // Lights
 const pointLight = new THREE.PointLight(0xffffff, 0.1)
@@ -66,6 +69,14 @@ const jupiterSystem = new THREE.Group()
 const saturnSystem = new THREE.Group()
 const uranusSystem = new THREE.Group()
 const neptuneSystem = new THREE.Group()
+
+// Stars
+const starsGeometry = new THREE.SphereGeometry(50, 32, 32)
+const starsTexture = new THREE.TextureLoader().load(starsImg)
+const starsMaterial = new THREE.MeshBasicMaterial({ map: starsTexture })
+const starsMesh = new THREE.Mesh(starsGeometry, starsMaterial)
+starsMesh.material.side = THREE.BackSide
+solarSystem.add(starsMesh)
 
 // Sun
 const sunGeometry = new THREE.SphereGeometry(environment.sun.radius, 32, 16)
@@ -114,7 +125,7 @@ const neptune = new Planet(1, 28, neptuneImg)
 const neptuneMesh = neptune.getMesh()
 neptuneSystem.add(neptuneMesh)
 
-// Add each planet's system to the solar system group
+// Add each planet's system and the stars to the solar system group
 solarSystem.add(mercurySystem, venusSystem, earthSystem, marsSystem, jupiterSystem, saturnSystem, uranusSystem, neptuneSystem)
 
 scene.add(solarSystem)
