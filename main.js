@@ -241,7 +241,7 @@ const tick = () =>
     neptuneObj.rotation.y = revolutionSpeed.neptune * elapsedTime
 
     // Update Orbital Controls
-     controls.update()
+    controls.update()
 
     // Render
     renderer.render(scene, camera)

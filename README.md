@@ -14,6 +14,7 @@ Desarrollado con WebGL utilizando la librería de Three.js.
 - Ajuste de velocidad de rotación de planetas y el Sol (semi-escala)
 - Se agregó una rotación de cada planeta al Sol, cada una con diferente velocidad (semi-escala)
 - Se agregaron anillos que trazan el recorrido de rotación alrededor del Sol de cada planeta
+- Se agregó un anillo a Saturno
 
 ![Imagen avance 3](images/avance3.PNG)
 
