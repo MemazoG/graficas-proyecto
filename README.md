@@ -6,8 +6,21 @@ Desarrollado con WebGL utilizando la librería de Three.js.
 
 
 
-## Avance (30 de abril de 2022)
-Se agregaron las esferas correspondientes al sol y a los planetas
+## Avance 3 (6 de junio de 2022)
+- Se agregaron e implementaron los bump maps para Mercurio, Venus, Tierra, Marte y Júpiter
+- Se agregó una esfera gigante con un mapa de las estrellas para tener como fondo
+- Ajuste de tamaño de los planetas y el Sol (semi-escala)
+- Ajuste de distancias entre los planetas y el Sol (semi-escala)
+- Ajuste de velocidad de rotación de planetas y el Sol (semi-escala)
+- Se agregó una rotación de cada planeta al Sol, cada una con diferente velocidad (semi-escala)
+- Se agregaron anillos que trazan el recorrido de rotación alrededor del Sol de cada planeta
+
+![Imagen avance 3](images/avance3.PNG)
+
+## Avance 2 (30 de abril de 2022)
+- Se agregaron las esferas correspondientes al Sol y a los planetas
+- Se aplicaron texturas al Sol y a los planetas
+- Se agregó una rotación predeterminada al Sol y los planetas
 
 ![Imagen avance 2](images/avance2.PNG)
 
