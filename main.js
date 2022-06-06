@@ -40,9 +40,9 @@ const scene = new THREE.Scene()
 
 // Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x =12
-camera.position.y = 0
-camera.position.z = 15
+camera.position.x = 0
+camera.position.y = 20
+camera.position.z = 25
 scene.add(camera)
 
 // Renderer
