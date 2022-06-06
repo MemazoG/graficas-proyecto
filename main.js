@@ -15,6 +15,9 @@ import uranusImg from "./images/uranus.jpg"
 import neptuneImg from "./images/neptune.jpg"
 import Planet from "./Planet" // Class that creates planets
 import environment from "./environmentSetup" // File with default attributes for each element to be modified with dat.gui
+import { sunSize, mercurySize, venusSize, earthSize, marsSize, jupiterSize, saturnSize, uranusSize, neptuneSize } from './scaleLogic'
+import { mercuryDist, venusDist, earthDist, marsDist, jupiterDist, saturnDist, uranusDist, neptuneDist } from './scaleLogic'
+import { mercuryRotSpeed, venusRotSpeed, earthRotSpeed, marsRotSpeed, jupiterRotSpeed, saturnRotSpeed, uranusRotSpeed, neptuneRotSpeed } from './scaleLogic'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -79,49 +82,49 @@ starsMesh.material.side = THREE.BackSide
 solarSystem.add(starsMesh)
 
 // Sun
-const sunGeometry = new THREE.SphereGeometry(environment.sun.radius, 32, 16)
+const sunGeometry = new THREE.SphereGeometry(sunSize, 32, 16)
 const sunTexture = new THREE.TextureLoader().load(sunImg)
 const sunMaterial = new THREE.MeshBasicMaterial({ map: sunTexture })
 const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial)
 solarSystem.add(sunMesh)
 
 // mercury
-const mercury = new Planet(1, 7, mercuryImg)
+const mercury = new Planet(mercurySize, mercuryDist, mercuryImg)
 const mercuryMesh = mercury.getMesh()
 mercurySystem.add(mercuryMesh)
 
 // Venus
-const venus = new Planet(1, 10, venusImg)
+const venus = new Planet(venusSize, venusDist, venusImg)
 const venusMesh = venus.getMesh()
 venusSystem.add(venusMesh)
 
 // Earth
-const earth = new Planet(1, 13, earthImg)
+const earth = new Planet(earthSize, earthDist, earthImg)
 const earthMesh = earth.getMesh()
 earthSystem.add(earthMesh)
 
 // Mars
-const mars = new Planet(1, 16, marsImg)
+const mars = new Planet(marsSize, marsDist, marsImg)
 const marsMesh = mars.getMesh()
 marsSystem.add(marsMesh)
 
 // Jupiter
-const jupiter = new Planet(1, 19, jupiterImg)
+const jupiter = new Planet(jupiterSize, jupiterDist, jupiterImg)
 const jupiterMesh = jupiter.getMesh()
 jupiterSystem.add(jupiterMesh)
 
 // Saturn
-const saturn = new Planet(1, 22, saturnImg)
+const saturn = new Planet(saturnSize, saturnDist, saturnImg)
 const saturnMesh = saturn.getMesh()
 saturnSystem.add(saturnMesh)
 
 // Uranus
-const uranus = new Planet(1, 25, uranusImg)
+const uranus = new Planet(uranusSize, uranusDist, uranusImg)
 const uranusMesh = uranus.getMesh()
 uranusSystem.add(uranusMesh)
 
 // Neptune
-const neptune = new Planet(1, 28, neptuneImg)
+const neptune = new Planet(neptuneSize, neptuneDist, neptuneImg)
 const neptuneMesh = neptune.getMesh()
 neptuneSystem.add(neptuneMesh)
 
@@ -228,15 +231,16 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
-     sunMesh.rotation.y = .5 * elapsedTime
-     mercuryMesh.rotation.y = .5 * elapsedTime
-     venusMesh.rotation.y = .5 * elapsedTime
-     earthMesh.rotation.y = .5 * elapsedTime
-     marsMesh.rotation.y = .5 * elapsedTime
-     jupiterMesh.rotation.y = .5 * elapsedTime
-     saturnMesh.rotation.y = .5 * elapsedTime
-     uranusMesh.rotation.y = .5 * elapsedTime
-     neptuneMesh.rotation.y = .5 * elapsedTime
+     starsMesh.rotation.y = 0.01 * elapsedTime
+     sunMesh.rotation.y = 0.09 * elapsedTime
+     mercuryMesh.rotation.y = mercuryRotSpeed * elapsedTime
+     venusMesh.rotation.y = venusRotSpeed * elapsedTime
+     earthMesh.rotation.y = earthRotSpeed * elapsedTime
+     marsMesh.rotation.y = marsRotSpeed * elapsedTime
+     jupiterMesh.rotation.y = jupiterRotSpeed * elapsedTime
+     saturnMesh.rotation.y = saturnRotSpeed * elapsedTime
+     uranusMesh.rotation.y = uranusRotSpeed * elapsedTime
+     neptuneMesh.rotation.y = neptuneRotSpeed * elapsedTime
 
     // Update Orbital Controls
      controls.update()
