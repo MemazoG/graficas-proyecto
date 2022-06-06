@@ -13,6 +13,7 @@ import earthBump from "./images/earthBump.jpg"
 import marsImg from "./images/mars.jpg"
 import marsBump from "./images/marsBump.jpg"
 import jupiterImg from "./images/jupiter.jpg"
+import jupiterBump from "./images/jupiterBump.jpg"
 import saturnImg from "./images/saturn.jpg"
 import saturnRing from "./images/saturn_ring.png"
 import uranusImg from "./images/uranus.jpg"
@@ -58,10 +59,7 @@ controls.minDistance = 5
 controls.maxDistance = 50
 
 // Lights
-const pointLight = new THREE.PointLight(0xffffff, 3, 70)
-//pointLight.position.x = 2
-//pointLight.position.y = 3
-//pointLight.position.z = 4
+const pointLight = new THREE.PointLight(0xffffff, 2, 70)
 scene.add(pointLight)
 
 // =================================================================================================
@@ -94,7 +92,7 @@ const sunMaterial = new THREE.MeshBasicMaterial({ map: sunTexture })
 const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial)
 solarSystem.add(sunMesh)
 
-// Mercury PLANET
+// Mercury
 const mercury = new Planet(mercurySize, mercuryDist, mercuryImg, mercuryBump)
 const mercuryMesh = mercury.getMesh()
 mercurySystem.add(mercuryMesh)
@@ -139,7 +137,7 @@ const marsPathMesh = marsPath.getMesh()
 solarSystem.add(marsPathMesh)
 
 // Jupiter
-const jupiter = new Planet(jupiterSize, jupiterDist, jupiterImg, undefined)
+const jupiter = new Planet(jupiterSize, jupiterDist, jupiterImg, jupiterBump)
 const jupiterMesh = jupiter.getMesh()
 jupiterSystem.add(jupiterMesh)
 const jupiterObj = new THREE.Object3D() // Jupiter system will rotate around this object, which is placed at the origin (0, 0, 0)

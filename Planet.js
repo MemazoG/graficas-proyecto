@@ -17,7 +17,7 @@ export default class Planet {
             const texture = new THREE.TextureLoader().load(this.imgRoute)
             let material = (this.bumpMap === undefined) ? 
                 new THREE.MeshStandardMaterial({ map: texture }) :
-                new THREE.MeshStandardMaterial({ map: texture, bumpMap: new THREE.TextureLoader().load(this.bumpMap), bumpScale: 0.3 })
+                new THREE.MeshStandardMaterial({ map: texture, bumpMap: new THREE.TextureLoader().load(this.bumpMap), bumpScale: 0.1 })
             this.mesh = new THREE.Mesh(geometry, material)
             this.mesh.position.x += this.posX
         }
