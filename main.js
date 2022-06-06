@@ -21,10 +21,7 @@ import neptuneImg from "./images/neptune.jpg"
 import Planet from "./Planet" // Class that creates planets
 import PlanetPath from "./PlanetPath" // Class that creates the rings representing a planet's path
 import environment from "./environmentSetup" // File with default attributes for each element to be modified with dat.gui
-import { sunSize, mercurySize, venusSize, earthSize, marsSize, jupiterSize, saturnSize, uranusSize, neptuneSize } from './scaleLogic'
-import { mercuryDist, venusDist, earthDist, marsDist, jupiterDist, saturnDist, uranusDist, neptuneDist } from './scaleLogic'
-import { mercuryRotSpeed, venusRotSpeed, earthRotSpeed, marsRotSpeed, jupiterRotSpeed, saturnRotSpeed, uranusRotSpeed, neptuneRotSpeed } from './scaleLogic'
-import { mercuryRevSpeed, venusRevSpeed, earthRevSpeed, marsRevSpeed, jupiterRevSpeed, saturnRevSpeed, uranusRevSpeed, neptuneRevSpeed } from './scaleLogic'
+import { sizes, distances, rotationSpeed, revolutionSpeed } from './scaleLogic'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -33,13 +30,13 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Sizes
- const sizes = {
+ const windowSizes = {
   width: window.innerWidth,
   height: window.innerHeight
 }
 
 // Camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+const camera = new THREE.PerspectiveCamera(75, windowSizes.width / windowSizes.height, 0.1, 100)
 camera.position.x = 0
 camera.position.y = 20
 camera.position.z = 25
@@ -49,7 +46,7 @@ scene.add(camera)
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas
 })
-renderer.setSize(sizes.width, sizes.height)
+renderer.setSize(windowSizes.width, windowSizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 // Controls
@@ -86,97 +83,97 @@ starsMesh.material.side = THREE.BackSide
 solarSystem.add(starsMesh)
 
 // Sun
-const sunGeometry = new THREE.SphereGeometry(sunSize, 32, 16)
+const sunGeometry = new THREE.SphereGeometry(sizes.sun, 32, 16)
 const sunTexture = new THREE.TextureLoader().load(sunImg)
 const sunMaterial = new THREE.MeshBasicMaterial({ map: sunTexture })
 const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial)
 solarSystem.add(sunMesh)
 
 // Mercury
-const mercury = new Planet(mercurySize, mercuryDist, mercuryImg, mercuryBump)
+const mercury = new Planet(sizes.mercury, distances.mercury, mercuryImg, mercuryBump)
 const mercuryMesh = mercury.getMesh()
 mercurySystem.add(mercuryMesh)
 const mercuryObj = new THREE.Object3D() // Mercury system will rotate around this object, which is placed at the origin (0, 0, 0)
 mercuryObj.add(mercurySystem)
 
-const mercuryPath = new PlanetPath(mercuryDist)
+const mercuryPath = new PlanetPath(distances.mercury)
 const mercuryPathMesh = mercuryPath.getMesh()
 solarSystem.add(mercuryPathMesh)
 
 // Venus
-const venus = new Planet(venusSize, venusDist, venusImg, venusBump)
+const venus = new Planet(sizes.venus, distances.venus, venusImg, venusBump)
 const venusMesh = venus.getMesh()
 venusSystem.add(venusMesh)
 const venusObj = new THREE.Object3D() // Venus system will rotate around this object, which is placed at the origin (0, 0, 0)
 venusObj.add(venusSystem)
 
-const venusPath = new PlanetPath(venusDist)
+const venusPath = new PlanetPath(distances.venus)
 const venusPathMesh = venusPath.getMesh()
 solarSystem.add(venusPathMesh)
 
 // Earth
-const earth = new Planet(earthSize, earthDist, earthImg, earthBump)
+const earth = new Planet(sizes.earth, distances.earth, earthImg, earthBump)
 const earthMesh = earth.getMesh()
 earthSystem.add(earthMesh)
 const earthObj = new THREE.Object3D() // Earth system will rotate around this object, which is placed at the origin (0, 0, 0)
 earthObj.add(earthSystem)
 
-const earthPath = new PlanetPath(earthDist)
+const earthPath = new PlanetPath(distances.earth)
 const earthPathMesh = earthPath.getMesh()
 solarSystem.add(earthPathMesh)
 
 // Mars
-const mars = new Planet(marsSize, marsDist, marsImg, marsBump)
+const mars = new Planet(sizes.mars, distances.mars, marsImg, marsBump)
 const marsMesh = mars.getMesh()
 marsSystem.add(marsMesh)
 const marsObj = new THREE.Object3D() // Mars system will rotate around this object, which is placed at the origin (0, 0, 0)
 marsObj.add(marsSystem)
 
-const marsPath = new PlanetPath(marsDist)
+const marsPath = new PlanetPath(distances.mars)
 const marsPathMesh = marsPath.getMesh()
 solarSystem.add(marsPathMesh)
 
 // Jupiter
-const jupiter = new Planet(jupiterSize, jupiterDist, jupiterImg, jupiterBump)
+const jupiter = new Planet(sizes.jupiter, distances.jupiter, jupiterImg, jupiterBump)
 const jupiterMesh = jupiter.getMesh()
 jupiterSystem.add(jupiterMesh)
 const jupiterObj = new THREE.Object3D() // Jupiter system will rotate around this object, which is placed at the origin (0, 0, 0)
 jupiterObj.add(jupiterSystem)
 
-const jupiterPath = new PlanetPath(jupiterDist)
+const jupiterPath = new PlanetPath(distances.jupiter)
 const jupiterPathMesh = jupiterPath.getMesh()
 solarSystem.add(jupiterPathMesh)
 
 // Saturn
-const saturn = new Planet(saturnSize, saturnDist, saturnImg, undefined)
+const saturn = new Planet(sizes.saturn, distances.saturn, saturnImg, undefined)
 const saturnMesh = saturn.getMesh()
 saturnSystem.add(saturnMesh)
 const saturnObj = new THREE.Object3D() // Saturn system will rotate around this object, which is placed at the origin (0, 0, 0)
 saturnObj.add(saturnSystem)
 
-const saturnPath = new PlanetPath(saturnDist)
+const saturnPath = new PlanetPath(distances.saturn)
 const saturnPathMesh = saturnPath.getMesh()
 solarSystem.add(saturnPathMesh)
 
 // Uranus
-const uranus = new Planet(uranusSize, uranusDist, uranusImg, undefined)
+const uranus = new Planet(sizes.uranus, distances.uranus, uranusImg, undefined)
 const uranusMesh = uranus.getMesh()
 uranusSystem.add(uranusMesh)
 const uranusObj = new THREE.Object3D() // Uranus system will rotate around this object, which is placed at the origin (0, 0, 0)
 uranusObj.add(uranusSystem)
 
-const uranusPath = new PlanetPath(uranusDist)
+const uranusPath = new PlanetPath(distances.uranus)
 const uranusPathMesh = uranusPath.getMesh()
 solarSystem.add(uranusPathMesh)
 
 // Neptune
-const neptune = new Planet(neptuneSize, neptuneDist, neptuneImg, undefined)
+const neptune = new Planet(sizes.neptune, distances.neptune, neptuneImg, undefined)
 const neptuneMesh = neptune.getMesh()
 neptuneSystem.add(neptuneMesh)
 const neptuneObj = new THREE.Object3D() // Neptune system will rotate around this object, which is placed at the origin (0, 0, 0)
 neptuneObj.add(neptuneSystem)
 
-const neptunePath = new PlanetPath(neptuneDist)
+const neptunePath = new PlanetPath(distances.neptune)
 const neptunePathMesh = neptunePath.getMesh()
 solarSystem.add(neptunePathMesh)
 
@@ -191,15 +188,15 @@ scene.add(solarSystem)
 window.addEventListener('resize', () =>
 {
     // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+    windowSizes.width = window.innerWidth
+    windowSizes.height = window.innerHeight
 
     // Update camera
-    camera.aspect = sizes.width / sizes.height
+    camera.aspect = windowSizes.width / windowSizes.height
     camera.updateProjectionMatrix()
 
     // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
+    renderer.setSize(windowSizes.width, windowSizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
@@ -214,24 +211,24 @@ const tick = () =>
     // Update planet rotations around themselves
      starsMesh.rotation.y = 0.001 * elapsedTime
      sunMesh.rotation.y = 0.005 * elapsedTime
-     mercuryMesh.rotation.y = mercuryRotSpeed * elapsedTime
-     venusMesh.rotation.y = venusRotSpeed * elapsedTime
-     earthMesh.rotation.y = earthRotSpeed * elapsedTime
-     marsMesh.rotation.y = marsRotSpeed * elapsedTime
-     jupiterMesh.rotation.y = jupiterRotSpeed * elapsedTime
-     saturnMesh.rotation.y = saturnRotSpeed * elapsedTime
-     uranusMesh.rotation.y = uranusRotSpeed * elapsedTime
-     neptuneMesh.rotation.y = neptuneRotSpeed * elapsedTime
+     mercuryMesh.rotation.y = rotationSpeed.mercury * elapsedTime
+     venusMesh.rotation.y = rotationSpeed.venus * elapsedTime
+     earthMesh.rotation.y = rotationSpeed.earth * elapsedTime
+     marsMesh.rotation.y = rotationSpeed.mars * elapsedTime
+     jupiterMesh.rotation.y = rotationSpeed.jupiter * elapsedTime
+     saturnMesh.rotation.y = rotationSpeed.saturn * elapsedTime
+     uranusMesh.rotation.y = rotationSpeed.uranus * elapsedTime
+     neptuneMesh.rotation.y = rotationSpeed.neptune * elapsedTime
 
     // Update planet revolutions around the Sun
-    mercuryObj.rotation.y = mercuryRevSpeed * elapsedTime
-    venusObj.rotation.y = venusRevSpeed * elapsedTime
-    earthObj.rotation.y = earthRevSpeed  * elapsedTime
-    marsObj.rotation.y = marsRevSpeed * elapsedTime
-    jupiterObj.rotation.y = jupiterRevSpeed * elapsedTime
-    saturnObj.rotation.y = saturnRevSpeed * elapsedTime
-    uranusObj.rotation.y = uranusRevSpeed * elapsedTime
-    neptuneObj.rotation.y = neptuneRevSpeed * elapsedTime
+    mercuryObj.rotation.y = revolutionSpeed.mercury * elapsedTime
+    venusObj.rotation.y = revolutionSpeed.venus * elapsedTime
+    earthObj.rotation.y = revolutionSpeed.earth  * elapsedTime
+    marsObj.rotation.y = revolutionSpeed.mars * elapsedTime
+    jupiterObj.rotation.y = revolutionSpeed.jupiter * elapsedTime
+    saturnObj.rotation.y = revolutionSpeed.saturn * elapsedTime
+    uranusObj.rotation.y = revolutionSpeed.uranus * elapsedTime
+    neptuneObj.rotation.y = revolutionSpeed.neptune * elapsedTime
 
     // Update Orbital Controls
      controls.update()

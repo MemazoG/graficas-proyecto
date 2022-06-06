@@ -7,16 +7,17 @@
 // Sizes scale
 const EARTH_SIZE_SCALE = 1
 
-export const sunSize = EARTH_SIZE_SCALE * 7
-export const mercurySize = EARTH_SIZE_SCALE * 0.6
-export const venusSize = EARTH_SIZE_SCALE * 0.9
-export const earthSize = EARTH_SIZE_SCALE
-export const marsSize = EARTH_SIZE_SCALE * 0.5
-export const jupiterSize = EARTH_SIZE_SCALE * 2
-export const saturnSize = EARTH_SIZE_SCALE * 1.5
-export const uranusSize = EARTH_SIZE_SCALE * 1.3
-export const neptuneSize = EARTH_SIZE_SCALE * 1.2
-
+export const sizes = {
+  sun: EARTH_SIZE_SCALE * 7,
+  mercury: EARTH_SIZE_SCALE * 0.6,
+  venus: EARTH_SIZE_SCALE * 0.9,
+  earth: EARTH_SIZE_SCALE,
+  mars: EARTH_SIZE_SCALE * 0.5,
+  jupiter: EARTH_SIZE_SCALE * 2,
+  saturn: EARTH_SIZE_SCALE * 1.5,
+  uranus: EARTH_SIZE_SCALE * 1.3,
+  neptune: EARTH_SIZE_SCALE * 1.2,
+}
 
 
 /**
@@ -28,15 +29,16 @@ export const neptuneSize = EARTH_SIZE_SCALE * 1.2
 // Distance from the Sun scale
 const EARTH_DIST_SCALE = 20
 
-export const mercuryDist = EARTH_DIST_SCALE * 0.6
-export const venusDist = EARTH_DIST_SCALE * 0.8
-export const earthDist = EARTH_DIST_SCALE
-export const marsDist = EARTH_DIST_SCALE * 1.2
-export const jupiterDist = EARTH_DIST_SCALE * 1.4
-export const saturnDist = EARTH_DIST_SCALE * 1.7
-export const uranusDist = EARTH_DIST_SCALE * 1.9
-export const neptuneDist = EARTH_DIST_SCALE * 2.1
-
+export const distances = {
+  mercury: EARTH_DIST_SCALE * 0.6,
+  venus: EARTH_DIST_SCALE * 0.8,
+  earth: EARTH_DIST_SCALE,
+  mars: EARTH_DIST_SCALE * 1.2,
+  jupiter: EARTH_DIST_SCALE * 1.4,
+  saturn: EARTH_DIST_SCALE * 1.7,
+  uranus: EARTH_DIST_SCALE * 1.9,
+  neptune: EARTH_DIST_SCALE * 2.1,
+}
 
 /**
   ================================================
@@ -44,17 +46,19 @@ export const neptuneDist = EARTH_DIST_SCALE * 2.1
   ================================================
  */
 
+// Rotation speed scale
 const EARTH_ROTATION_SCALE = 0.4
 
-export const mercuryRotSpeed = EARTH_ROTATION_SCALE * 0.5
-export const venusRotSpeed = EARTH_ROTATION_SCALE * 0.75
-export const earthRotSpeed = EARTH_ROTATION_SCALE
-export const marsRotSpeed = EARTH_ROTATION_SCALE * 1.05
-export const jupiterRotSpeed = EARTH_ROTATION_SCALE * 1.75
-export const saturnRotSpeed = EARTH_ROTATION_SCALE * 1.6
-export const uranusRotSpeed = EARTH_ROTATION_SCALE * 1.5
-export const neptuneRotSpeed = EARTH_ROTATION_SCALE * 0.9
-
+export const rotationSpeed = {
+  mercury: EARTH_ROTATION_SCALE * 0.5,
+  venus: EARTH_ROTATION_SCALE * 0.75,
+  earth: EARTH_ROTATION_SCALE,
+  mars: EARTH_ROTATION_SCALE * 1.05,
+  jupiter: EARTH_ROTATION_SCALE * 1.75,
+  saturn: EARTH_ROTATION_SCALE * 1.6,
+  uranus: EARTH_ROTATION_SCALE * 1.5,
+  neptune: EARTH_ROTATION_SCALE * 0.9,
+}
 
 /**
   ==================================================
@@ -62,13 +66,16 @@ export const neptuneRotSpeed = EARTH_ROTATION_SCALE * 0.9
   ==================================================
  */
 
+// Revolution speed scale
 const EARTH_REVOLUTION_SPEED = 0.07
 
-export const mercuryRevSpeed = EARTH_REVOLUTION_SPEED * 3
-export const venusRevSpeed = EARTH_REVOLUTION_SPEED * 1.5
-export const earthRevSpeed = EARTH_REVOLUTION_SPEED
-export const marsRevSpeed = EARTH_REVOLUTION_SPEED * 0.9
-export const jupiterRevSpeed = EARTH_REVOLUTION_SPEED * 0.8
-export const saturnRevSpeed = EARTH_REVOLUTION_SPEED * 0.6
-export const uranusRevSpeed = EARTH_REVOLUTION_SPEED * 0.4
-export const neptuneRevSpeed = EARTH_REVOLUTION_SPEED * 0.3
+export const revolutionSpeed = {
+  mercury: EARTH_REVOLUTION_SPEED * 3,
+  venus: EARTH_REVOLUTION_SPEED * 1.5,
+  earth: EARTH_REVOLUTION_SPEED,
+  mars: EARTH_REVOLUTION_SPEED * 0.9,
+  jupiter: EARTH_REVOLUTION_SPEED * 0.8,
+  saturn: EARTH_REVOLUTION_SPEED * 0.6,
+  uranus: EARTH_REVOLUTION_SPEED * 0.4,
+  neptune: EARTH_REVOLUTION_SPEED * 0.3,
+}
