@@ -21,7 +21,7 @@ import neptuneImg from "./images/neptune.jpg"
 import Planet from "./Planet" // Class that creates planets
 import PlanetPath from "./PlanetPath" // Class that creates the rings representing a planet's path
 import environment from "./environmentSetup" // File with default attributes for each element to be modified with dat.gui
-import { sizes, distances, rotationSpeed, revolutionSpeed } from './scaleLogic'
+import { sizes, distances, rotationSpeed, revolutionSpeed } from './scaleLogic' // File with all the scaling logic data
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
