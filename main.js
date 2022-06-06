@@ -59,7 +59,7 @@ controls.minDistance = 5
 controls.maxDistance = 50
 
 // Lights
-const pointLight = new THREE.PointLight(0xffffff, 2, 70)
+const pointLight = new THREE.PointLight(0xffffff, 2.5, 70)
 scene.add(pointLight)
 
 // =================================================================================================
