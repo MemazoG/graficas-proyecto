@@ -219,8 +219,8 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
 
     // Update planet rotations around themselves
-     starsMesh.rotation.y = 0.001 * elapsedTime
-     sunMesh.rotation.y = 0.005 * elapsedTime
+     starsMesh.rotation.y = 0.005 * elapsedTime
+     sunMesh.rotation.y = 0.02 * elapsedTime
      mercuryMesh.rotation.y = rotationSpeed.mercury * elapsedTime
      venusMesh.rotation.y = rotationSpeed.venus * elapsedTime
      earthMesh.rotation.y = rotationSpeed.earth * elapsedTime
