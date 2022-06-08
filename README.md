@@ -16,6 +16,7 @@ Desarrollado con WebGL utilizando la librería de Three.js.
 - Se agregaron anillos que trazan el recorrido de rotación alrededor del Sol de cada planeta
 - Se agregó un anillo a Saturno
 
+![Video del avance](https://drive.google.com/file/d/1qXsCCH4WgKh_bOcH4yJXqvKdr485Aztb/view?usp=sharing)
 ![Imagen avance 3](images/avance3.PNG)
 
 ## Avance 2 (30 de abril de 2022)
